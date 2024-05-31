@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(title),
         actions: <Widget>[
-          PopupMenuButton(
+          PopupMenuButton<String>(
             child: _buildMenuContent(language),
             itemBuilder: (context) {
               return exampleMap.keys.map((key) {
@@ -56,11 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
               }).toList();
             },
             onSelected: (selected) {
-              if (selected != null) {
-                setState(() {
-                  language = selected;
-                });
-              }
+              setState(() {
+                language = selected;
+              });
             },
           ),
           PopupMenuButton<String>(
@@ -75,11 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
               }).toList();
             },
             onSelected: (selected) {
-              if (selected != null) {
-                setState(() {
-                  theme = selected;
-                });
-              }
+              setState(() {
+                theme = selected;
+              });
             },
           ),
           IconButton(
@@ -96,9 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             HighlightView(
-              exampleMap[language],
+              exampleMap[language]!,
               language: language,
-              theme: themeMap[theme],
+              theme: themeMap[theme]!,
               padding: EdgeInsets.all(12),
               textStyle: TextStyle(
                   fontFamily:
